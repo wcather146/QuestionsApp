@@ -135,7 +135,8 @@ class SurveyFormsViewController: UIViewController {
                 switch result {
                 case .success:
                     print("Successfully fetched questions for project: \(surveyProject.project), state: \(surveyProject.standard), form: \(form.code)")
-                    let costFactorValue = Double(surveyProject.costFactor) ?? 1.0   // fallback to 1.0 if nil/invalid
+                    _ = Double(surveyProject.costFactor) ?? 1.0   // fallback to 1.0 if nil/invalid
+                    //let costFactorValue = Double(surveyProject.costFactor) ?? 1.0 
                     let secondVC = SecondScreenViewController(project: surveyProject.project, state: surveyProject.standard, form: form.code, costFactor: costFactorDouble)
                     secondVC.hideBarrierButton = false // Allow barrier creation
                     self.navigationController?.pushViewController(secondVC, animated: true)

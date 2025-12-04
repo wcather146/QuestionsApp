@@ -250,12 +250,6 @@ class SurveySetupViewController: UIViewController {
         //guard let project = selectedProject, let campus = selectedCampus, let site = selectedSite else { return }
         guard let selectedSite = selectedSite else { return }
         let surveyProject = SurveyProject(
-//            project: project,
-//            campus: campus,
-//            site: site.site,
-//            unid: site.unid,
-//            standard: site.standard,
-//            costFactor: site.costFactor,
             project: selectedProject!,
             campus: selectedCampus!,
             site: selectedSite.site,

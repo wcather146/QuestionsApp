@@ -33,7 +33,7 @@ class FourthScreenViewController: UIViewController {
     
     // NEW: Unit Type (read-only) and Units (editable)
     private let unitTypeLabel = UILabel()
-    private let unitTypeValueLabel = UILabel()  // This replaces the old unitTypeLabel
+    private let unitTypeValueLabel = UILabel()
     private let unitsTextField = UITextField()
     
     private let surveyorNotesTextView = UITextView()
@@ -136,16 +136,6 @@ class FourthScreenViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .black
-//        navigationItem.title = "Barrier Details"
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(
-//            title: "Back",
-//            style: .plain,
-//            target: self,
-//            action: #selector(backTapped)
-//        )
-//        navigationItem.leftBarButtonItem?.tintColor = .systemYellow
-//        navigationItem.leftBarButtonItem?.accessibilityLabel = "Back to Question Details"
-        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
@@ -904,8 +894,6 @@ class FourthScreenViewController: UIViewController {
     
     
 }
-
-
 
 extension FourthScreenViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

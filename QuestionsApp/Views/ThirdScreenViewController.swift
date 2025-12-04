@@ -61,24 +61,9 @@ class ThirdScreenViewController: UIViewController {
             barrierButton.tintColor = .systemYellow
             navigationItem.rightBarButtonItem = barrierButton
         }
-        
-//        if hideBarrierButton {
-//            navigationItem.rightBarButtonItem?.isHidden = true
-//            navigationItem.rightBarButtonItem?.isEnabled = false
-//            navigationItem.rightBarButtonItem?.accessibilityElementsHidden = true
-//            print("Barrier button hidden due to navigation from WelcomeScreen")
-//        }
     }
     
     private func setupUI() {
-//        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
-//        navigationItem.leftBarButtonItem = backButton
-//        
-//        let barrierButton = UIBarButtonItem(title: "Barrier", style: .plain, target: self, action: #selector(barrierTapped))
-//        barrierButton.tintColor = .systemYellow // Branding: yellow
-//        barrierButton.accessibilityLabel = "Open Barrier Details"
-//        navigationItem.rightBarButtonItem = barrierButton
-    
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
@@ -95,8 +80,6 @@ class ThirdScreenViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-        
-        
     }
     
     private func updateUI() {
@@ -403,33 +386,7 @@ class ThirdScreenViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        
-//    // Load Project from UserDefaults
-//        guard let projectJSON = UserDefaults.standard.string(forKey: "selectedProject"),
-//           let projectData = projectJSON.data(using: .utf8),
-//           let project = try? JSONDecoder().decode(Project.self, from: projectData) else {
-//            let alert = UIAlertController(title: "Error", message: "Selected project not found.", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .default))
-//            present(alert, animated: true)
-//           return
-//        }
-//            
-        // Load State from UserDefaults
-//        guard let stateJSON = UserDefaults.standard.string(forKey: "selectedState"),
-//                let stateData = stateJSON.data(using: .utf8),
-//                let selectedState = try? JSONDecoder().decode(State.self, from: stateData) else {
-//                let alert = UIAlertController(title: "Error", message: "State information not found.", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .default))
-//                present(alert, animated: true)
-//                return
-//            }
-        
-        //guard let questionItem = currentQuestionItem else {  // ← CHANGE THIS if needed
-        //     showAlert(title: "Error", message: "Question data not available.")
-        //     return
-        //}
-        
-        
+               
         let fourthVC = FourthScreenViewController(
             questionID: questionID,
             barrierQuestion: questionDetail?.barrierQuestion,

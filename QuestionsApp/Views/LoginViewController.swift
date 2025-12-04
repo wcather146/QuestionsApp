@@ -74,7 +74,6 @@ class LoginViewController: UIViewController {
         passwordLabel.textAlignment = .left
         
         configureTextField(passwordField, placeholder: "Enter password", isSecure: true)
-        //passwordField.isSecureTextEntry = true
         
         // Login Button (even punchier)
         loginButton.setTitle("LOGIN", for: .normal)

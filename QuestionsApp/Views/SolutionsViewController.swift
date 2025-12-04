@@ -70,37 +70,32 @@ class SolutionsViewController: UIViewController {
     }
     
     private func fetchSolutions() {
-        // Show loading alert
-           // let loadingAlert = UIAlertController(title: nil, message: "Loading solutions...", preferredStyle: .alert)
-           // loadingAlert.view.tintColor = .systemYellow
-           // present(loadingAlert, animated: true, completion: nil)
-            
-            NetworkManager.shared.fetchSolutions(
-                project: projectNumber,
-                standard: standard,
-                type: qtype
-            ) { [weak self] result in
-                // ALWAYS dismiss the alert — no matter what happens
-                DispatchQueue.main.async {
-                    // Dismiss FIRST — this is the key
-                    //loadingAlert.dismiss(animated: true) {
-                        switch result {
-                        case .success(let solutions):
-                            print("Successfully loaded \(solutions.count) solutions")
-                            self?.solutions = solutions
-                            self?.tableView.reloadData()
-                            
-                            if solutions.isEmpty {
-                                self?.showEmptyState("No solutions found for this question.")
-                            }
-                            
-                        case .failure(let error):
-                            print("Failed to load solutions: \(error)")
-                            self?.showEmptyState("Error loading solutions.\n\(error.localizedDescription)")
+        NetworkManager.shared.fetchSolutions(
+            project: projectNumber,
+            standard: standard,
+            type: qtype
+        ) { [weak self] result in
+            // ALWAYS dismiss the alert — no matter what happens
+            DispatchQueue.main.async {
+                // Dismiss FIRST — this is the key
+                //loadingAlert.dismiss(animated: true) {
+                    switch result {
+                    case .success(let solutions):
+                        print("Successfully loaded \(solutions.count) solutions")
+                        self?.solutions = solutions
+                        self?.tableView.reloadData()
+                        
+                        if solutions.isEmpty {
+                            self?.showEmptyState("No solutions found for this question.")
                         }
-                    //}
-                }
+                        
+                    case .failure(let error):
+                        print("Failed to load solutions: \(error)")
+                        self?.showEmptyState("Error loading solutions.\n\(error.localizedDescription)")
+                    }
+                //}
             }
+        }
     }
     
     private func showEmptyState(_ message: String) {
@@ -131,31 +126,7 @@ extension SolutionsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return solutions.count
     }
-    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "SolutionCell", for: indexPath)
-//        let solution = solutions[indexPath.row]
-//        
-//        // Title: SolutionCode + Solution (wrapped)
-//        // cell.textLabel?.text = "\(solution.SolutionCode): \(solution.Solution)"
-//        cell.textLabel?.text = "\(solution.Solution) \n SubTitle: \(String(describing: solution.SubTitle))"
-//        //cell.textLabel?.text = solution.Solution
-//        cell.textLabel?.font = .systemFont(ofSize: 20)
-//        cell.textLabel?.textColor = .white
-//        cell.textLabel?.numberOfLines = 0
-//        
-//        // Subtitle: UnitType • Cost (your JSON has these)
-//        let costText = solution.unitCostValue == 0 ? "No Cost" : "$\(solution.UnitCost)"
-//        cell.detailTextLabel?.text = "\(solution.UnitType) • \(costText)"
-//        cell.detailTextLabel?.textColor = .systemYellow
-//        cell.detailTextLabel?.font = .systemFont(ofSize: 14)
-//        
-//        cell.backgroundColor = .black
-//        cell.selectionStyle = .default
-//        
-//        return cell
-//    }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SolutionCell", for: indexPath)
         let solution = solutions[indexPath.row]
