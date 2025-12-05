@@ -20,8 +20,8 @@ class FirstScreenViewController: UIViewController {
     
     
     private var selectedProject: Project?
-    private var selectedState: State?  //(name: String, code: String)?
-    private var selectedForm: Form?  //(name: String, code: String)?
+    private var selectedState: State?
+    private var selectedForm: Form?
     
     var hideBarrierButton: Bool = false
     
@@ -33,7 +33,6 @@ class FirstScreenViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .black // Branding: black background
-        //navigationItem.hidesBackButton = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
